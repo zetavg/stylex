@@ -4,7 +4,8 @@
     "noUncheckedIndexedAccess": true,
     "lib": [
       "ES2019",
-      "ES2021.String"
+      "ES2021.String",
+      "DOM"
     ],
     "esModuleInterop": true,
     "jsx": "preserve",

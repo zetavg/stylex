@@ -5,7 +5,14 @@
   "scripts": {
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --pretty",
-    "build": "rm -rf build && babel src -d build --extensions '.ts,.tsx'"
+    "start": "rm -rf build && mkdir build && cp html/index.html build/index.html && concurrently \"npm:babel-watch\" \"npm:parcel-dev-server\" --kill-others-on-fail",
+    "babel-watch": "babel src -d build --extensions '.ts,.tsx' --watch",
+    "parcel-dev-server": "parcel build/index.html"
+  },
+  "dependencies": {
+    "@stylexjs/stylex": "^0.6.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.7",
@@ -16,13 +23,13 @@
     "@types/eslint": "^8",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "eslint": "^8.10",
+    "concurrently": "^8.2.2",
     "eslint-config-prettier": "^9",
     "eslint-plugin-prettier": "^5",
     "eslint-plugin-simple-import-sort": "^10",
-    "prettier": "^3"
-  },
-  "dependencies": {
-    "@stylexjs/stylex": "^0.6.1"
+    "eslint": "^8.10",
+    "parcel": "^2.12.0",
+    "prettier": "^3",
+    "process": "^0.11.10"
   }
 }

@@ -7,3 +7,5 @@ coverage
 dist
 lib
 node_modules
+
+.parcel-cache

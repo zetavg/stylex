@@ -14,6 +14,10 @@ const styles = stylex.create({
   container: {
     color: tokens.primaryText,
     backgroundColor: tokens.background,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: tokens.lineColor,
+    borderRadius: tokens.borderRadius,
   },
 });
 
