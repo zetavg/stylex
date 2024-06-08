@@ -9,6 +9,7 @@
 
 import * as t from '@babel/types';
 import type { NodePath } from '@babel/traverse';
+import { basename } from 'path';
 import type { FunctionConfig } from '../../utils/evaluate-path';
 import StateManager from '../../utils/state-manager';
 import {
@@ -58,6 +59,12 @@ export default function transformStyleXCreate(
       state.stylexImport.has(node.callee.object.name))
   ) {
     validateStyleXCreate(path);
+
+    const callExpressionPath = path;
+    const variableDeclaratorPath = callExpressionPath.parentPath;
+    const id = variableDeclaratorPath?.get('id');
+    const variableName = id.node.name;
+    const fileName = basename(state.filename);
 
     const args: $ReadOnlyArray<
       NodePath<
@@ -123,7 +130,7 @@ export default function transformStyleXCreate(
     // eslint-disable-next-line prefer-const
     let [compiledStyles, injectedStylesSansKeyframes] = stylexCreate(
       plainObject,
-      state.options,
+      { ...state.options, fileName, variableName, devReadableCss: state.options.devReadableCss },
     );
 
     const injectedStyles = {

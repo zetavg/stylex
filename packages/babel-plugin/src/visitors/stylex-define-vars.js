@@ -9,6 +9,7 @@
 
 import * as t from '@babel/types';
 import type { NodePath } from '@babel/traverse';
+import { basename } from 'path';
 import StateManager from '../utils/state-manager';
 import {
   defineVars as stylexDefineVars,
@@ -129,6 +130,9 @@ export default function transformStyleXDefineVars(
       {
         ...state.options,
         themeName: utils.genFileBasedIdentifier({ fileName, exportName }),
+        fileName: basename(fileName),
+        exportName,
+        devReadableCss: state.options.devReadableCss,
       },
     );
 

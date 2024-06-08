@@ -45,7 +45,7 @@ export default function styleXCreateSet(
 
     const flattenedNamespace = flattenRawStyleObject(namespace, options);
     const compiledNamespaceTuples = flattenedNamespace.map(([key, value]) => {
-      return [key, value.compiled(options)];
+      return [key, value.compiled({ ...options, namespaceName })];
     });
 
     const compiledNamespace = objFromEntries<

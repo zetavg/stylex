@@ -37,7 +37,7 @@ export default function styleXDefineVars<Vars: VarsConfig>(
     ...options,
   };
 
-  const themeNameHash = classNamePrefix + createHash(themeName);
+  const themeNameHash = classNamePrefix + (options.devReadableCss ? `${options.exportName}_` : '') + createHash(themeName);
 
   const typedVariables: {
     [string]: $ReadOnly<{
@@ -48,7 +48,7 @@ export default function styleXDefineVars<Vars: VarsConfig>(
 
   const variablesMap = objMap(variables, (value, key) => {
     // Created hashed variable names with fileName//themeName//key
-    const nameHash = classNamePrefix + createHash(`${themeName}.${key}`);
+    const nameHash = classNamePrefix + (options.devReadableCss ? `${options.exportName}_${key}_` : '') + createHash(`${themeName}.${key}`);
     if (isCSSType(value)) {
       const v: CSSType<> = value;
       typedVariables[nameHash] = {

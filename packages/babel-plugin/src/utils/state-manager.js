@@ -145,6 +145,13 @@ export default class StateManager {
   }
 
   setOptions(options: { +[string]: mixed }): StyleXStateOptions {
+    const devReadableCss = z.logAndDefault(
+      z.boolean(),
+      options.devReadableCss ?? false,
+      false,
+      'options.devReadableCss',
+    );
+
     const dev: StyleXStateOptions['dev'] = z.logAndDefault(
       z.boolean(),
       options.dev ?? false,
@@ -267,6 +274,7 @@ export default class StateManager {
 
     const opts: StyleXStateOptions = {
       aliases,
+      devReadableCss,
       dev,
       test,
       runtimeInjection,

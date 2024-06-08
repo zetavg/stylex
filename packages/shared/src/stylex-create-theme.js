@@ -59,7 +59,7 @@ export default function styleXCreateTheme(
     .join('');
 
   // Create a class name hash
-  const overrideClassName = classNamePrefix + createHash(atRulesStringForHash);
+  const overrideClassName = classNamePrefix + (options.devReadableCss ? `${options.variableName}_` : '') + createHash(atRulesStringForHash);
 
   const stylesToInject: { [string]: InjectableStyle } = {};
 

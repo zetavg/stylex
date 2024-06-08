@@ -161,7 +161,7 @@ function evaluateThemeRef(
         : utils.genFileBasedIdentifier({ fileName, exportName, key });
 
     const varName =
-      state.traversalState.options.classNamePrefix + utils.hash(strToHash);
+      state.traversalState.options.classNamePrefix + (state.traversalState.options.devReadableCss ? `${exportName}_${key}_` : '') + utils.hash(strToHash);
     return `var(--${varName})`;
   };
 
