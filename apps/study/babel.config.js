@@ -7,9 +7,10 @@ module.exports = {
     [
       styleXPlugin,
       {
-        dev: false,
+        dev: true,
         runtimeInjection: true,
-        devReadableCss: true,
+        devReadableCss: false,
+        devReadableCssVars: true,
         // Set this to true for snapshot testing
         // default: false
         test: false,
