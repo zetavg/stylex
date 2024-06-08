@@ -138,7 +138,7 @@ export default function transformStyleXCreateTheme(
     let [overridesObj, injectedStyles] = stylexCreateTheme(
       variables,
       overrides,
-      { ...state.options, variableName, devReadableCss: state.options.devReadableCss },
+      { ...state.options, variableName, devReadableCss: state.options.devReadableCss, devReadableCssVars: state.options.devReadableCssVars },
     );
 
     if (state.isTest) {

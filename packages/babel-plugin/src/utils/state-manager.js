@@ -152,6 +152,13 @@ export default class StateManager {
       'options.devReadableCss',
     );
 
+    const devReadableCssVars = z.logAndDefault(
+      z.boolean(),
+      options.devReadableCssVars ?? false,
+      false,
+      'options.devReadableCssVars',
+    );
+
     const dev: StyleXStateOptions['dev'] = z.logAndDefault(
       z.boolean(),
       options.dev ?? false,
@@ -175,12 +182,12 @@ export default class StateManager {
       );
 
     // prettier-ignore
-    const runtimeInjection: StyleXStateOptions['runtimeInjection'] 
-      = configRuntimeInjection === true ? 
+    const runtimeInjection: StyleXStateOptions['runtimeInjection']
+      = configRuntimeInjection === true ?
         DEFAULT_INJECT_PATH
-      : configRuntimeInjection === false ? 
+      : configRuntimeInjection === false ?
         undefined
-      : 
+      :
         configRuntimeInjection
       ;
 
@@ -275,6 +282,7 @@ export default class StateManager {
     const opts: StyleXStateOptions = {
       aliases,
       devReadableCss,
+      devReadableCssVars,
       dev,
       test,
       runtimeInjection,

@@ -133,6 +133,7 @@ export default function transformStyleXDefineVars(
         fileName: basename(fileName),
         exportName,
         devReadableCss: state.options.devReadableCss,
+        devReadableCssVars: state.options.devReadableCssVars,
       },
     );
 
