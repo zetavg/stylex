@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 
-import App from './examples/token-hierarchy/App';
+import App from './examples/token-hierarchy-2/App';
 
 // Clear the existing HTML content
 document.body.innerHTML = '<div id="app"></div>';

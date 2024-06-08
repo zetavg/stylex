@@ -3,6 +3,7 @@ const styleXPlugin = require('@stylexjs/babel-plugin');
 module.exports = {
   presets: ['@babel/preset-typescript'],
   plugins: [
+    '@babel/plugin-syntax-jsx',
     [
       styleXPlugin,
       {
