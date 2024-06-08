@@ -68,6 +68,7 @@ export default function styleXDefineVars<Vars: VarsConfig>(
   const injectableStyles = constructCssVariablesString(
     variablesMap,
     themeNameHash,
+    classNamePrefix,
   );
 
   const injectableTypes: { +[string]: InjectableStyle } = objMap(
@@ -88,6 +89,7 @@ export default function styleXDefineVars<Vars: VarsConfig>(
 function constructCssVariablesString(
   variables: { +[string]: { +nameHash: string, +value: VarsConfigValue } },
   themeNameHash: string,
+  classNamePrefix: string,
 ): { [string]: InjectableStyle } {
   const rulesByAtRule: { [string]: Array<string> } = {};
 
@@ -99,7 +101,7 @@ function constructCssVariablesString(
   for (const [atRule, value] of Object.entries(rulesByAtRule)) {
     const suffix = atRule === 'default' ? '' : `-${createHash(atRule)}`;
 
-    let ltr = `:root{${value.join('')}}`;
+    let ltr = `:root,.${classNamePrefix}vars{${value.join('')}}`;
     if (atRule !== 'default') {
       ltr = wrapWithAtRules(ltr, atRule);
     }
