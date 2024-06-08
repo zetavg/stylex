@@ -7,7 +7,9 @@ module.exports = {
     [
       styleXPlugin,
       {
-        dev: true,
+        dev: false,
+        runtimeInjection: true,
+        devReadableCss: true,
         // Set this to true for snapshot testing
         // default: false
         test: false,
@@ -19,6 +21,8 @@ module.exports = {
           // The absolute path to the root directory of your project
           rootDir: __dirname,
         },
+
+        classNamePrefix: 'x_',
       },
     ],
   ],

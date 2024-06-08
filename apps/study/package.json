@@ -5,8 +5,9 @@
   "scripts": {
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --pretty",
-    "start": "rm -rf build && mkdir build && cp html/index.html build/index.html && concurrently \"npm:babel-watch\" \"npm:parcel-dev-server\" --kill-others-on-fail",
-    "babel-watch": "babel src -d build --extensions '.js,.jsx,.ts,.tsx' --watch",
+    "start": "rm -rf build && mkdir build && cp html/index.html build/index.html && npm run build && concurrently \"npm:babel-watch\" \"npm:parcel-dev-server\" --kill-others-on-fail",
+    "build": "babel src -d build --extensions '.js,.jsx,.ts,.tsx'",
+    "babel-watch": "npm run build -- --watch",
     "parcel-dev-server": "parcel build/index.html"
   },
   "dependencies": {
