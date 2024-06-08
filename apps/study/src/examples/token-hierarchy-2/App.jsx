@@ -9,8 +9,8 @@ const indigoTheme = stylex.createTheme(systemColors, {
 });
 
 const lightColorPaletteTheme = stylex.createTheme(colorPalette, {
-  blue: '#66B0FF',
-  indigo: '#8584E1',
+  blue: '#1C96F6',
+  indigo: '#9E7CEE',
   white: '#FFFFFF',
   // ...
 });
@@ -49,6 +49,17 @@ function App() {
         <Button label="Light button" />
         <br />
         <small>(Should be light blue!)</small>
+      </div>
+
+      <br />
+      <br />
+      <hr />
+
+      <div {...stylex.props(lightColorPaletteTheme, indigoTheme)}>
+        <h2>Button with Light Color Palette and Indigo Theme</h2>
+        <Button label="Light indigo button" />
+        <br />
+        <small>(Should be light indigo!)</small>
       </div>
     </>
   );
