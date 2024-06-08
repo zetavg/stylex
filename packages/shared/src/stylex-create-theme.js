@@ -83,7 +83,7 @@ export default function styleXCreateTheme(
   }
 
   return [
-    { $$css: true, [themeVars.__themeName__]: overrideClassName },
+    { $$css: true, [themeVars.__themeName__]: overrideClassName, __overrideRootVars__: `${classNamePrefix}vars` },
     stylesToInject,
   ];
 }
